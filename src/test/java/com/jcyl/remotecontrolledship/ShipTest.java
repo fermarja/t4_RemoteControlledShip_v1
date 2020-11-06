@@ -1,6 +1,7 @@
 package com.jcyl.remotecontrolledship;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -70,6 +71,17 @@ public class ShipTest {
 		ship.moveForward();
 		Location destino = new Location(new Point(2,10), Direction.NORTH);
 		Assert.assertEquals(destino, ship.getLocation());
+	}
+	
+	@Test
+	public void noPisamosTierra() {
+		Location loc = new Location(new Point(2, 2), Direction.NORTH);
+		Ship ship = new Ship(loc, new Planet(new Point(10,10), new ArrayList<Point>()));
+		List<Point> tierra = new ArrayList<Point>();
+		tierra.add(new Point(2, 1));
+		String respuesta = ship.receiveCommands("f");
+		Assert.assertEquals("O", respuesta);
+		Assert.assertEquals(loc, ship.getLocation());
 	}
 	
 }
