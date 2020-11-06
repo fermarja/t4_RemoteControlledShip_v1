@@ -82,7 +82,7 @@ public class ShipTest {
 		tierra.add(new Point(2, 1));
 		planet.setObstacles(tierra);
 		String respuesta = ship.receiveCommands("f");
-		Assert.assertEquals("O", respuesta);
+		Assert.assertEquals("X", respuesta);
 		Assert.assertEquals(loc, ship.getLocation());
 	}
 	
