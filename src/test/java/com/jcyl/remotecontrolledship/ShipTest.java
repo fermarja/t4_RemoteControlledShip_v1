@@ -76,9 +76,11 @@ public class ShipTest {
 	@Test
 	public void noPisamosTierra() {
 		Location loc = new Location(new Point(2, 2), Direction.NORTH);
-		Ship ship = new Ship(loc, new Planet(new Point(10,10), new ArrayList<Point>()));
+		Planet planet = new Planet(new Point(10,10), new ArrayList<Point>());
+		Ship ship = new Ship(loc, planet);
 		List<Point> tierra = new ArrayList<Point>();
 		tierra.add(new Point(2, 1));
+		planet.setObstacles(tierra);
 		String respuesta = ship.receiveCommands("f");
 		Assert.assertEquals("O", respuesta);
 		Assert.assertEquals(loc, ship.getLocation());
